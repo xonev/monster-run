@@ -1,33 +1,42 @@
 let img;
 let x = 100;
 let y = 100;
+let idleImage;
+let jumpImage;
+let rightImage;
+let leftImage;
 
 function setup() {
     createCanvas(1000, 600);
-    img = loadImage('art/sprite.png',8,8);
+    idleImage = loadImage('art/sprite.png');
+    leftImage = loadImage('art/sprite-5.png');
+    rightImage = loadImage('art/sprite-4.png');
+    jumpImage = loadImage('art/sprite-1.png');
 }
 
 function draw() {
+    
     if (keyIsDown(LEFT_ARROW)) {
         x -= 5;
-        img = loadImage('art/sprite-5.png',8,8);
+        img = leftImage;
     }
-
-    if (keyIsDown(RIGHT_ARROW)) {
+    else if (keyIsDown(RIGHT_ARROW)) {
         x += 5;
-        img = loadImage('art/sprite-4.png',8,8);
+        img = rightImage;
     }
-
-    if (keyIsDown(UP_ARROW)) {
+    else if (keyIsDown(UP_ARROW)) {
         y -= 5;
-        img = loadImage('art/sprite-1.png',8,8);
+        img = jumpImage;
     }
-
-    if (keyIsDown(DOWN_ARROW)) {
+    else if (keyIsDown(DOWN_ARROW)) {
         y += 5;
+        img = idleImage;
+    }
+    else {
+        img = idleImage;
     }
 
     clear();
     background(100, 100, 250);
-    image(img, x, y);
+    image(img, x, y, 80, 80);
 }
