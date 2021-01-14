@@ -30,7 +30,7 @@ function draw() {
     }
     else if (keyIsDown(DOWN_ARROW)) {
         y += 5;
-        img = idleImage;
+        img = jumpImage;
     }
     else {
         img = idleImage;
