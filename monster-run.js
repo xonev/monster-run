@@ -5,6 +5,11 @@ let idleImage;
 let jumpImage;
 let rightImage;
 let leftImage;
+const SPACE = 32;
+const floor = 400;
+
+const canvasHeight = 600;
+const canvasWidth = 1000;
 
 function setup() {
     createCanvas(1000, 600);
@@ -15,7 +20,7 @@ function setup() {
 }
 
 function draw() {
-    
+
     if (keyIsDown(LEFT_ARROW)) {
         x -= 5;
         img = leftImage;
@@ -25,18 +30,24 @@ function draw() {
         img = rightImage;
     }
     else if (keyIsDown(UP_ARROW)) {
-        y -= 5;
-        img = jumpImage;
-    }
-    else if (keyIsDown(DOWN_ARROW)) {
-        y += 5;
+        y -= 10;
         img = jumpImage;
     }
     else {
         img = idleImage;
     }
 
+    if (y < 400) {
+        y += 5;
+        img = jumpImage;
+    }
+
     clear();
     background(100, 100, 250);
+
+    fill(20, 200, 100);
+    noStroke();
+    rect(0, floor, canvasWidth, canvasHeight - floor);
+
     image(img, x, y, 80, 80);
 }
